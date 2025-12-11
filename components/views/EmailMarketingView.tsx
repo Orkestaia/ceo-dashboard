@@ -19,7 +19,7 @@ export function EmailMarketingView({ data }: ViewProps) {
                     <table className="w-full text-sm">
                         <thead>
                             <tr className="border-b border-slate-700">
-                                <th className="text-left py-3 px-4 text-slate-300 font-medium">Envío Date</th>
+                                <th className="text-left py-3 px-4 text-slate-300 font-medium">Send Date</th>
                                 <th className="text-right py-3 px-4 text-slate-300 font-medium">Sent</th>
                                 <th className="text-right py-3 px-4 text-slate-300 font-medium">Delivered</th>
                                 <th className="text-right py-3 px-4 text-slate-300 font-medium">Open Rate</th>
@@ -34,7 +34,7 @@ export function EmailMarketingView({ data }: ViewProps) {
                         <tbody>
                             {emailMarketing.map((row, idx) => (
                                 <tr key={idx} className="border-b border-slate-700/50 hover:bg-slate-700/30">
-                                    <td className="py-3 px-4 text-white">{row["Envío Date"]}</td>
+                                    <td className="py-3 px-4 text-white">{row["Send Date"]}</td>
                                     <td className="py-3 px-4 text-right text-blue-400">{row["Sent"]}</td>
                                     <td className="py-3 px-4 text-right text-emerald-400">{row["Delivered"]}</td>
                                     <td className="py-3 px-4 text-right text-purple-400">{row["Open Rate"]}</td>

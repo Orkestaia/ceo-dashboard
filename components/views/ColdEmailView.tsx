@@ -19,14 +19,14 @@ export function ColdEmailView({ data }: ViewProps) {
                     <table className="w-full text-sm">
                         <thead>
                             <tr className="border-b border-slate-700">
-                                <th className="text-left py-3 px-4 text-slate-300 font-medium">Sender</th>
-                                <th className="text-left py-3 px-4 text-slate-300 font-medium">Date</th>
+                                <th className="text-left py-3 px-4 text-slate-300 font-medium">Sector</th>
+                                <th className="text-left py-3 px-4 text-slate-300 font-medium">State</th>
                                 <th className="text-right py-3 px-4 text-slate-300 font-medium">Lead in list</th>
                                 <th className="text-right py-3 px-4 text-slate-300 font-medium">Sent</th>
                                 <th className="text-right py-3 px-4 text-slate-300 font-medium">Completed</th>
                                 <th className="text-right py-3 px-4 text-slate-300 font-medium">Open</th>
                                 <th className="text-right py-3 px-4 text-slate-300 font-medium">Reply</th>
-                                <th className="text-right py-3 px-4 text-slate-300 font-medium">Increase delay</th>
+                                <th className="text-right py-3 px-4 text-slate-300 font-medium">Positive Reply</th>
                                 <th className="text-right py-3 px-4 text-slate-300 font-medium">Clic in link</th>
                                 <th className="text-right py-3 px-4 text-slate-300 font-medium">Bounced</th>
                             </tr>
@@ -34,14 +34,14 @@ export function ColdEmailView({ data }: ViewProps) {
                         <tbody>
                             {coldEmail.map((row, idx) => (
                                 <tr key={idx} className="border-b border-slate-700/50 hover:bg-slate-700/30">
-                                    <td className="py-3 px-4 text-white">{row["Sender"]}</td>
-                                    <td className="py-3 px-4 text-slate-300">{row["Date"]}</td>
+                                    <td className="py-3 px-4 text-white">{row["Sector"]}</td>
+                                    <td className="py-3 px-4 text-slate-300">{row["State"]}</td>
                                     <td className="py-3 px-4 text-right text-blue-400">{row["Lead in list"]}</td>
                                     <td className="py-3 px-4 text-right text-emerald-400">{row["Sent"]}</td>
                                     <td className="py-3 px-4 text-right text-purple-400">{row["Completed"]}</td>
                                     <td className="py-3 px-4 text-right text-orange-400">{row["Open"]}</td>
                                     <td className="py-3 px-4 text-right text-pink-400">{row["Reply"]}</td>
-                                    <td className="py-3 px-4 text-right text-slate-400">{row["Increase delay"]}</td>
+                                    <td className="py-3 px-4 text-right text-emerald-300">{row["Positive Reply"]}</td>
                                     <td className="py-3 px-4 text-right text-cyan-400">{row["Clic in link"]}</td>
                                     <td className="py-3 px-4 text-right text-red-400">{row["Bounced"]}</td>
                                 </tr>

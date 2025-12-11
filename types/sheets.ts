@@ -1,7 +1,7 @@
-// Exact structure from Google Sheets - NO transformations
+// Exact structure from Google Sheets - matching REAL CSV data
 
 export interface AcquisitionChannel {
-    "Primer origen de usuario principal de usuario predeterminado de la sesión": string;
+    "Primer grupo de canales principal del usuario (Grupo de canales predeterminado)": string;
     "Total de usuarios": string;
     "Usuarios nuevos": string;
     "Usuarios recurrentes": string;
@@ -15,20 +15,20 @@ export interface TopPage {
 }
 
 export interface ColdEmailRow {
-    "Sender": string;
-    "Date": string;
+    "Sector": string;
+    "State": string;
     "Lead in list": string;
     "Sent": string;
     "Completed": string;
     "Open": string;
     "Reply": string;
-    "Increase delay": string;
+    "Positive Reply": string;
     "Clic in link": string;
     "Bounced": string;
 }
 
 export interface EmailMarketingRow {
-    "Envío Date": string;
+    "Send Date": string;
     "Sent": string;
     "Delivered": string;
     "Open Rate": string;
@@ -45,8 +45,8 @@ export interface MetaAdsRow {
     "Amount spent (USD)": string;
     "Impressions": string;
     "CPM (cost per 1,000 impressions)": string;
-    "Link clicks": string;
     "CTR (all)": string;
+    "Link clicks": string;
     "CPC (all)": string;
     "Result type": string;
     "Results": string;

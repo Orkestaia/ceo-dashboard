@@ -29,15 +29,18 @@ export function AnalyticsView({ data }: ViewProps) {
                             </tr>
                         </thead>
                         <tbody>
-                            {acquisitionChannels.map((row, idx) => (
-                                <tr key={idx} className="border-b border-slate-700/50 hover:bg-slate-700/30">
-                                    <td className="py-3 px-4 text-white">{row["Primer origen de usuario principal de usuario predeterminado de la sesión"]}</td>
-                                    <td className="py-3 px-4 text-right text-blue-400 font-medium">{row["Total de usuarios"]}</td>
-                                    <td className="py-3 px-4 text-right text-emerald-400">{row["Usuarios nuevos"]}</td>
-                                    <td className="py-3 px-4 text-right text-purple-400">{row["Usuarios recurrentes"]}</td>
-                                    <td className="py-3 px-4 text-right text-orange-400">{row["Eventos clave"]}</td>
-                                </tr>
-                            ))}
+                            {acquisitionChannels.map((row, idx) => {
+                                const channelName = row["Primer grupo de canales principal del usuario (Grupo de canales predeterminado)"];
+                                return (
+                                    <tr key={idx} className="border-b border-slate-700/50 hover:bg-slate-700/30">
+                                        <td className="py-3 px-4 text-white">{channelName}</td>
+                                        <td className="py-3 px-4 text-right text-blue-400 font-medium">{row["Total de usuarios"]}</td>
+                                        <td className="py-3 px-4 text-right text-emerald-400">{row["Usuarios nuevos"]}</td>
+                                        <td className="py-3 px-4 text-right text-purple-400">{row["Usuarios recurrentes"]}</td>
+                                        <td className="py-3 px-4 text-right text-orange-400">{row["Eventos clave"]}</td>
+                                    </tr>
+                                );
+                            })}
                         </tbody>
                     </table>
                 </div>
