@@ -1,75 +1,55 @@
-import { DashboardData } from "@/types/n8n";
-import { Send } from "lucide-react";
+import { SheetData } from "@/types/sheets";
 
 interface ViewProps {
-    data: DashboardData;
+    data: SheetData;
 }
 
 export function EmailMarketingView({ data }: ViewProps) {
-    const { campaigns, totals } = data.emailMarketing;
+    const { emailMarketing } = data;
 
     return (
-        <div className="space-y-6">
-            <div className="flex justify-between items-end">
-                <h2 className="text-2xl font-bold text-slate-800">Email Marketing</h2>
-                <span className="px-3 py-1 bg-emerald-100 text-emerald-700 rounded-full text-sm font-medium">
-                    Generated Revenue: ${totals.totalRevenue.toLocaleString()}
-                </span>
+        <div className="space-y-8 p-6">
+            <div>
+                <h2 className="text-3xl font-bold text-white mb-2">Email Marketing Reports</h2>
+                <p className="text-slate-400">Campaign Performance</p>
             </div>
 
-            {/* KPI Row */}
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-                <div className="p-4 bg-white border rounded-xl shadow-sm">
-                    <p className="text-sm text-slate-500">Delivered</p>
-                    <p className="text-xl font-bold">{totals.totalDelivered.toLocaleString()}</p>
+            <div className="bg-slate-800/50 border border-slate-700 rounded-xl p-6">
+                <div className="overflow-x-auto">
+                    <table className="w-full text-sm">
+                        <thead>
+                            <tr className="border-b border-slate-700">
+                                <th className="text-left py-3 px-4 text-slate-300 font-medium">Envío Date</th>
+                                <th className="text-right py-3 px-4 text-slate-300 font-medium">Sent</th>
+                                <th className="text-right py-3 px-4 text-slate-300 font-medium">Delivered</th>
+                                <th className="text-right py-3 px-4 text-slate-300 font-medium">Open Rate</th>
+                                <th className="text-right py-3 px-4 text-slate-300 font-medium">Opens</th>
+                                <th className="text-right py-3 px-4 text-slate-300 font-medium">Click Rate</th>
+                                <th className="text-right py-3 px-4 text-slate-300 font-medium">Clicks</th>
+                                <th className="text-right py-3 px-4 text-slate-300 font-medium">Unsubscribes</th>
+                                <th className="text-right py-3 px-4 text-slate-300 font-medium">Bounced</th>
+                                <th className="text-right py-3 px-4 text-slate-300 font-medium">Revenue</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {emailMarketing.map((row, idx) => (
+                                <tr key={idx} className="border-b border-slate-700/50 hover:bg-slate-700/30">
+                                    <td className="py-3 px-4 text-white">{row["Envío Date"]}</td>
+                                    <td className="py-3 px-4 text-right text-blue-400">{row["Sent"]}</td>
+                                    <td className="py-3 px-4 text-right text-emerald-400">{row["Delivered"]}</td>
+                                    <td className="py-3 px-4 text-right text-purple-400">{row["Open Rate"]}</td>
+                                    <td className="py-3 px-4 text-right text-orange-400">{row["Opens"]}</td>
+                                    <td className="py-3 px-4 text-right text-pink-400">{row["Click Rate"]}</td>
+                                    <td className="py-3 px-4 text-right text-cyan-400">{row["Clicks"]}</td>
+                                    <td className="py-3 px-4 text-right text-red-400">{row["Unsubscribes"]}</td>
+                                    <td className="py-3 px-4 text-right text-yellow-400">{row["Bounced"]}</td>
+                                    <td className="py-3 px-4 text-right text-emerald-500 font-semibold">{row["Revenue"]}</td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
                 </div>
-                <div className="p-4 bg-white border rounded-xl shadow-sm">
-                    <p className="text-sm text-slate-500">Open Rate</p>
-                    <p className="text-xl font-bold text-blue-600">{totals.avgOpenRate}%</p>
-                </div>
-                <div className="p-4 bg-white border rounded-xl shadow-sm">
-                    <p className="text-sm text-slate-500">Click Rate</p>
-                    <p className="text-xl font-bold text-indigo-600">{totals.avgClickRate}%</p>
-                </div>
-                <div className="p-4 bg-white border rounded-xl shadow-sm">
-                    <p className="text-sm text-slate-500">Unsubscribes</p>
-                    <p className="text-xl font-bold text-red-500">{totals.totalUnsubscribes}</p>
-                </div>
-            </div>
-
-            {/* Campaign Performance */}
-            <div className="space-y-4">
-                {campaigns.map((camp, idx) => (
-                    <div key={idx} className="bg-white border rounded-xl p-6 shadow-sm flex flex-col md:flex-row items-center justify-between gap-6">
-                        <div className="flex items-center gap-4">
-                            <div className="h-12 w-12 rounded-full bg-blue-50 flex items-center justify-center text-blue-500">
-                                <Send className="w-6 h-6" />
-                            </div>
-                            <div>
-                                <h3 className="font-bold text-slate-800">{camp["Campaign Name"]}</h3>
-                                <p className="text-sm text-slate-500">Sent to {parseInt(camp.Sent).toLocaleString()} subscribers</p>
-                            </div>
-                        </div>
-
-                        <div className="flex items-center gap-8 text-center">
-                            <div>
-                                <p className="text-xs uppercase text-slate-400 font-semibold mb-1">Opens</p>
-                                <p className="font-bold text-slate-700">{camp.Opens}</p>
-                            </div>
-                            <div>
-                                <p className="text-xs uppercase text-slate-400 font-semibold mb-1">Clicks</p>
-                                <p className="font-bold text-slate-700">{camp.Clicks}</p>
-                            </div>
-                            <div>
-                                <p className="text-xs uppercase text-slate-400 font-semibold mb-1">Revenue</p>
-                                <p className="font-bold text-emerald-600">{camp.Revenue}</p>
-                            </div>
-                        </div>
-                    </div>
-                ))}
             </div>
         </div>
     );
 }
-
-

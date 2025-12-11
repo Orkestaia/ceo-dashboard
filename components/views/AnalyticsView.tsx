@@ -1,75 +1,66 @@
-import { DashboardData } from "@/types/n8n";
+import { SheetData } from "@/types/sheets";
 
 interface ViewProps {
-    data: DashboardData;
+    data: SheetData;
 }
 
 export function AnalyticsView({ data }: ViewProps) {
-    const { channels, topPages, totals } = data.analytics;
+    const { acquisitionChannels, topPages } = data;
 
     return (
-        <div className="space-y-6">
-            <h2 className="text-2xl font-bold text-slate-800">Google Analytics</h2>
-
-            {/* Main Stats */}
-            <div className="grid grid-cols-1 md:grid-cols-4 gap-4 bg-slate-900 text-white rounded-xl p-8 shadow-sm">
-                <div>
-                    <p className="text-slate-400 text-sm">Total Users</p>
-                    <p className="text-3xl font-bold mt-1">{totals.totalUsers.toLocaleString()}</p>
-                </div>
-                <div>
-                    <p className="text-slate-400 text-sm">New Users</p>
-                    <p className="text-3xl font-bold mt-1 text-blue-400">{totals.totalNewUsers.toLocaleString()}</p>
-                </div>
-                <div>
-                    <p className="text-slate-400 text-sm">Returning</p>
-                    <p className="text-3xl font-bold mt-1 text-purple-400">{totals.totalReturningUsers.toLocaleString()}</p>
-                </div>
-                <div>
-                    <p className="text-slate-400 text-sm">Key Events</p>
-                    <p className="text-3xl font-bold mt-1 text-emerald-400">{totals.totalKeyEvents}</p>
-                </div>
+        <div className="space-y-8 p-6">
+            <div>
+                <h2 className="text-3xl font-bold text-white mb-2">Google Analytics</h2>
+                <p className="text-slate-400">Acquisition Channels & Top Pages</p>
             </div>
 
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                {/* Acquisition Table */}
-                <div className="bg-white border rounded-xl shadow-sm p-6">
-                    <h3 className="font-semibold text-lg mb-4">Acquisition Channels</h3>
+            {/* Acquisition Channels */}
+            <div className="bg-slate-800/50 border border-slate-700 rounded-xl p-6">
+                <h3 className="text-xl font-semibold text-white mb-4">Acquisition Channels</h3>
+                <div className="overflow-x-auto">
                     <table className="w-full text-sm">
                         <thead>
-                            <tr className="border-b text-left text-slate-500">
-                                <th className="pb-2 font-medium">Channel</th>
-                                <th className="pb-2 text-right font-medium">Users</th>
-                                <th className="pb-2 text-right font-medium">Key Events</th>
+                            <tr className="border-b border-slate-700">
+                                <th className="text-left py-3 px-4 text-slate-300 font-medium">Channel</th>
+                                <th className="text-right py-3 px-4 text-slate-300 font-medium">Total Users</th>
+                                <th className="text-right py-3 px-4 text-slate-300 font-medium">New Users</th>
+                                <th className="text-right py-3 px-4 text-slate-300 font-medium">Returning</th>
+                                <th className="text-right py-3 px-4 text-slate-300 font-medium">Key Events</th>
                             </tr>
                         </thead>
-                        <tbody className="divide-y">
-                            {channels.map((ch, idx) => (
-                                <tr key={idx}>
-                                    <td className="py-3">{ch["Grupo de canales predeterminado de la sesión"]}</td>
-                                    <td className="py-3 text-right font-medium">{parseInt(ch["Total de usuarios"]).toLocaleString()}</td>
-                                    <td className="py-3 text-right text-emerald-600">{ch["Eventos clave"]}</td>
+                        <tbody>
+                            {acquisitionChannels.map((row, idx) => (
+                                <tr key={idx} className="border-b border-slate-700/50 hover:bg-slate-700/30">
+                                    <td className="py-3 px-4 text-white">{row["Primer origen de usuario principal de usuario predeterminado de la sesión"]}</td>
+                                    <td className="py-3 px-4 text-right text-blue-400 font-medium">{row["Total de usuarios"]}</td>
+                                    <td className="py-3 px-4 text-right text-emerald-400">{row["Usuarios nuevos"]}</td>
+                                    <td className="py-3 px-4 text-right text-purple-400">{row["Usuarios recurrentes"]}</td>
+                                    <td className="py-3 px-4 text-right text-orange-400">{row["Eventos clave"]}</td>
                                 </tr>
                             ))}
                         </tbody>
                     </table>
                 </div>
+            </div>
 
-                {/* Top Pages Table */}
-                <div className="bg-white border rounded-xl shadow-sm p-6">
-                    <h3 className="font-semibold text-lg mb-4">Top Pages</h3>
+            {/* Top Pages */}
+            <div className="bg-slate-800/50 border border-slate-700 rounded-xl p-6">
+                <h3 className="text-xl font-semibold text-white mb-4">Top 10 Pages</h3>
+                <div className="overflow-x-auto">
                     <table className="w-full text-sm">
                         <thead>
-                            <tr className="border-b text-left text-slate-500">
-                                <th className="pb-2 font-medium">Page Path</th>
-                                <th className="pb-2 text-right font-medium">Visits</th>
+                            <tr className="border-b border-slate-700">
+                                <th className="text-left py-3 px-4 text-slate-300 font-medium">Page</th>
+                                <th className="text-right py-3 px-4 text-slate-300 font-medium">Visits</th>
+                                <th className="text-right py-3 px-4 text-slate-300 font-medium">Active Users</th>
                             </tr>
                         </thead>
-                        <tbody className="divide-y">
-                            {topPages.map((page, idx) => (
-                                <tr key={idx}>
-                                    <td className="py-3 text-blue-600 truncate max-w-[200px]">{page["Ruta de la página y clase de pantalla"]}</td>
-                                    <td className="py-3 text-right font-bold">{parseInt(page["Visitas"]).toLocaleString()}</td>
+                        <tbody>
+                            {topPages.map((row, idx) => (
+                                <tr key={idx} className="border-b border-slate-700/50 hover:bg-slate-700/30">
+                                    <td className="py-3 px-4 text-blue-400">{row["Pages"]}</td>
+                                    <td className="py-3 px-4 text-right text-white font-medium">{row["Visits"]}</td>
+                                    <td className="py-3 px-4 text-right text-emerald-400">{row["Active User"]}</td>
                                 </tr>
                             ))}
                         </tbody>

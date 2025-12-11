@@ -1,73 +1,49 @@
-import { DollarSign, MousePointer, MousePointer2, TrendingUp } from "lucide-react";
-import { DashboardData } from "@/types/n8n";
+import { SheetData } from "@/types/sheets";
 
 interface ViewProps {
-    data: DashboardData;
+    data: SheetData;
 }
 
 export function MetaAdsView({ data }: ViewProps) {
-    const { campaigns, totals } = data.metaAds;
+    const { metaAds } = data;
 
     return (
-        <div className="space-y-6">
-            <h2 className="text-2xl font-bold text-slate-800">Meta Ads Performance</h2>
-
-            {/* KPI Cards */}
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-                <div className="p-4 bg-white border rounded-xl shadow-sm">
-                    <div className="flex justify-between items-center">
-                        <span className="text-sm text-slate-500">Total Spend</span>
-                        <DollarSign className="w-4 h-4 text-primary" />
-                    </div>
-                    <p className="text-2xl font-bold mt-2">${totals.totalSpend.toLocaleString()}</p>
-                </div>
-                <div className="p-4 bg-white border rounded-xl shadow-sm">
-                    <div className="flex justify-between items-center">
-                        <span className="text-sm text-slate-500">Impressions</span>
-                        <TrendingUp className="w-4 h-4 text-primary" />
-                    </div>
-                    <p className="text-2xl font-bold mt-2">{totals.totalImpressions.toLocaleString()}</p>
-                </div>
-                <div className="p-4 bg-white border rounded-xl shadow-sm">
-                    <div className="flex justify-between items-center">
-                        <span className="text-sm text-slate-500">Avg CPC</span>
-                        <MousePointer className="w-4 h-4 text-primary" />
-                    </div>
-                    <p className="text-2xl font-bold mt-2">${totals.avgCPC}</p>
-                </div>
-                <div className="p-4 bg-white border rounded-xl shadow-sm">
-                    <div className="flex justify-between items-center">
-                        <span className="text-sm text-slate-500">Avg CTR</span>
-                        <MousePointer2 className="w-4 h-4 text-primary" />
-                    </div>
-                    <p className="text-2xl font-bold mt-2">{totals.avgCTR}%</p>
-                </div>
+        <div className="space-y-8 p-6">
+            <div>
+                <h2 className="text-3xl font-bold text-white mb-2">Meta Ads Report</h2>
+                <p className="text-slate-400">Campaign Performance</p>
             </div>
 
-            {/* Campaigns Table */}
-            <div className="bg-white border rounded-xl shadow-sm overflow-hidden">
-                <div className="px-6 py-4 border-b border-border">
-                    <h3 className="font-semibold text-slate-800">Active Campaigns</h3>
-                </div>
+            <div className="bg-slate-800/50 border border-slate-700 rounded-xl p-6">
                 <div className="overflow-x-auto">
-                    <table className="w-full text-sm text-left">
-                        <thead className="text-xs text-slate-500 uppercase bg-slate-50 border-b">
-                            <tr>
-                                <th className="px-6 py-3">Campaign Name</th>
-                                <th className="px-6 py-3 text-right">Spend</th>
-                                <th className="px-6 py-3 text-right">Impressions</th>
-                                <th className="px-6 py-3 text-right">Clicks</th>
-                                <th className="px-6 py-3 text-right">Results</th>
+                    <table className="w-full text-sm">
+                        <thead>
+                            <tr className="border-b border-slate-700">
+                                <th className="text-left py-3 px-4 text-slate-300 font-medium">Campaign name</th>
+                                <th className="text-right py-3 px-4 text-slate-300 font-medium">Amount spent (USD)</th>
+                                <th className="text-right py-3 px-4 text-slate-300 font-medium">Impressions</th>
+                                <th className="text-right py-3 px-4 text-slate-300 font-medium">CPM</th>
+                                <th className="text-right py-3 px-4 text-slate-300 font-medium">Link clicks</th>
+                                <th className="text-right py-3 px-4 text-slate-300 font-medium">CTR (all)</th>
+                                <th className="text-right py-3 px-4 text-slate-300 font-medium">CPC (all)</th>
+                                <th className="text-left py-3 px-4 text-slate-300 font-medium">Result type</th>
+                                <th className="text-right py-3 px-4 text-slate-300 font-medium">Results</th>
+                                <th className="text-right py-3 px-4 text-slate-300 font-medium">Cost per result</th>
                             </tr>
                         </thead>
                         <tbody>
-                            {campaigns.map((camp, idx) => (
-                                <tr key={idx} className="bg-white border-b hover:bg-slate-50">
-                                    <td className="px-6 py-4 font-medium text-slate-900">{camp["Campaign name"]}</td>
-                                    <td className="px-6 py-4 text-right">${camp["Amount spent (USD)"]}</td>
-                                    <td className="px-6 py-4 text-right">{parseInt(camp["Impressions"]).toLocaleString()}</td>
-                                    <td className="px-6 py-4 text-right">{parseInt(camp["Link clicks"]).toLocaleString()}</td>
-                                    <td className="px-6 py-4 text-right text-emerald-600 font-semibold">{camp["Results"]}</td>
+                            {metaAds.map((row, idx) => (
+                                <tr key={idx} className="border-b border-slate-700/50 hover:bg-slate-700/30">
+                                    <td className="py-3 px-4 text-white">{row["Campaign name"]}</td>
+                                    <td className="py-3 px-4 text-right text-red-400 font-semibold">{row["Amount spent (USD)"]}</td>
+                                    <td className="py-3 px-4 text-right text-blue-400">{row["Impressions"]}</td>
+                                    <td className="py-3 px-4 text-right text-purple-400">{row["CPM (cost per 1,000 impressions)"]}</td>
+                                    <td className="py-3 px-4 text-right text-emerald-400">{row["Link clicks"]}</td>
+                                    <td className="py-3 px-4 text-right text-orange-400">{row["CTR (all)"]}</td>
+                                    <td className="py-3 px-4 text-right text-pink-400">{row["CPC (all)"]}</td>
+                                    <td className="py-3 px-4 text-slate-300">{row["Result type"]}</td>
+                                    <td className="py-3 px-4 text-right text-cyan-400">{row["Results"]}</td>
+                                    <td className="py-3 px-4 text-right text-yellow-400">{row["Cost per result"]}</td>
                                 </tr>
                             ))}
                         </tbody>

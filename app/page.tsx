@@ -6,9 +6,8 @@ import { MetaAdsView } from "@/components/views/MetaAdsView";
 import { ColdEmailView } from "@/components/views/ColdEmailView";
 import { EmailMarketingView } from "@/components/views/EmailMarketingView";
 import { AnalyticsView } from "@/components/views/AnalyticsView";
-import { fetchLiveDashboardData } from "@/lib/sheets";
-import { DashboardData } from "@/types/n8n";
-import { mockDashboardData } from "@/lib/mock-data";
+import { fetchSheetData } from "@/lib/fetch-sheets";
+import { SheetData } from "@/types/sheets";
 import { Loader2 } from "lucide-react";
 
 interface HomeProps {
@@ -19,17 +18,21 @@ interface HomeProps {
 
 export default function Home({ searchParams }: HomeProps) {
   const view = searchParams.view || "overview";
-  const [data, setData] = useState<DashboardData | null>(null);
+  const [data, setData] = useState<SheetData | null>(null);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     async function loadData() {
       try {
-        const liveData = await fetchLiveDashboardData();
-        setData(liveData);
+        setLoading(true);
+        setError(null);
+        const sheetData = await fetchSheetData();
+        console.log("Loaded data:", sheetData);
+        setData(sheetData);
       } catch (e) {
-        console.error("Failed to load live data, using mock", e);
-        setData(mockDashboardData);
+        console.error("Failed to load data:", e);
+        setError("Failed to load data from Google Sheets");
       } finally {
         setLoading(false);
       }
@@ -41,12 +44,25 @@ export default function Home({ searchParams }: HomeProps) {
     return (
       <div className="h-full w-full flex flex-col items-center justify-center text-slate-400">
         <Loader2 className="w-8 h-8 animate-spin mb-2 text-primary" />
-        <p>Scanning Live Data...</p>
+        <p>Loading data from Google Sheets...</p>
       </div>
     );
   }
 
-  if (!data) return null;
+  if (error || !data) {
+    return (
+      <div className="h-full w-full flex flex-col items-center justify-center text-red-400">
+        <p className="text-xl mb-2">⚠️ Error</p>
+        <p>{error || "No data available"}</p>
+        <button
+          onClick={() => window.location.reload()}
+          className="mt-4 px-4 py-2 bg-slate-700 rounded-lg hover:bg-slate-600"
+        >
+          Retry
+        </button>
+      </div>
+    );
+  }
 
   return (
     <>
