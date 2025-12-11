@@ -1,8 +1,12 @@
-import { mockDashboardData } from "@/lib/mock-data";
 import { DollarSign, MousePointer, MousePointer2, TrendingUp } from "lucide-react";
+import { DashboardData } from "@/types/n8n";
 
-export function MetaAdsView() {
-    const { campaigns, totals } = mockDashboardData.metaAds;
+interface ViewProps {
+    data: DashboardData;
+}
+
+export function MetaAdsView({ data }: ViewProps) {
+    const { campaigns, totals } = data.metaAds;
 
     return (
         <div className="space-y-6">

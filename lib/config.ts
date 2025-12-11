@@ -1,15 +1,16 @@
 export const SHEET_CONFIG = {
-    // Main Spreadsheet ID from the URL provided
-    SPREADSHEET_ID: "1xkpYfxjHa1V0Z-yZsozFnN2cbfShAzI5KmbgNQN76s4",
+  // Main Spreadsheet ID
+  SPREADSHEET_ID: "1xkpYfxjHa1V0Z-yZsozFnN2cbfShAzI5KmbgNQN76s4",
 
-    // GIDs (Sheet IDs) - We'll assume typical defaults or need user to confirm
-    // Since user provided a multi-sheet doc, we need the specific gid= for each view.
-    // For now, these are likely needing update by the user or inspection of the URL.
-    SHEETS: {
-        OVERVIEW: "0",      // "Hoja 1" or first sheet usually
-        META_ADS: "0",      // Placeholder - User needs to provide specific GIDs if different sheets
-        COLD_EMAIL: "0",
-        EMAIL_MKT: "0",
-        ANALYTICS: "0"
-    }
+  // GIDs provided by user
+  // Mapping based on previous context 
+  // (1361877226=Channels, 896433562=Pages). 
+  // Assigning leftovers to others sequentially.
+  SHEETS: {
+    ANALYTICS: "1361877226",      // Confirmed via history
+    ANALYTICS_PAGES: "896433562", // Confirmed via history
+    META_ADS: "1803005666",       // Assumed order
+    COLD_EMAIL: "1841138132",     // Assumed order
+    EMAIL_MKT: "1834854673"       // Assumed order
+  }
 };

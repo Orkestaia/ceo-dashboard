@@ -1,7 +1,12 @@
-import { mockDashboardData } from "@/lib/mock-data";
+import { DashboardData } from "@/types/n8n";
+import { Send } from "lucide-react";
 
-export function EmailMarketingView() {
-    const { campaigns, totals } = mockDashboardData.emailMarketing;
+interface ViewProps {
+    data: DashboardData;
+}
+
+export function EmailMarketingView({ data }: ViewProps) {
+    const { campaigns, totals } = data.emailMarketing;
 
     return (
         <div className="space-y-6">
@@ -38,7 +43,7 @@ export function EmailMarketingView() {
                     <div key={idx} className="bg-white border rounded-xl p-6 shadow-sm flex flex-col md:flex-row items-center justify-between gap-6">
                         <div className="flex items-center gap-4">
                             <div className="h-12 w-12 rounded-full bg-blue-50 flex items-center justify-center text-blue-500">
-                                <SendIcon />
+                                <Send className="w-6 h-6" />
                             </div>
                             <div>
                                 <h3 className="font-bold text-slate-800">{camp["Campaign Name"]}</h3>
@@ -67,8 +72,4 @@ export function EmailMarketingView() {
     );
 }
 
-function SendIcon() {
-    return (
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m22 2-7 20-4-9-9-4Z" /><path d="M22 2 11 13" /></svg>
-    )
-}
+

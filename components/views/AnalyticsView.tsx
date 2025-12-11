@@ -1,7 +1,11 @@
-import { mockDashboardData } from "@/lib/mock-data";
+import { DashboardData } from "@/types/n8n";
 
-export function AnalyticsView() {
-    const { channels, topPages, totals } = mockDashboardData.analytics;
+interface ViewProps {
+    data: DashboardData;
+}
+
+export function AnalyticsView({ data }: ViewProps) {
+    const { channels, topPages, totals } = data.analytics;
 
     return (
         <div className="space-y-6">

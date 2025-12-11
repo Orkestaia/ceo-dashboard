@@ -1,9 +1,13 @@
-import { mockDashboardData } from "@/lib/mock-data";
 import { ColorfulStatCard } from "@/components/dashboard/ColorfulStatCard";
 import { DollarSign, Users, Megaphone, TrendingUp, Monitor, MousePointer } from "lucide-react";
+import { DashboardData } from "@/types/n8n";
 
-export function OverviewView() {
-    const { metaAds, coldEmail, emailMarketing, analytics } = mockDashboardData;
+interface ViewProps {
+    data: DashboardData;
+}
+
+export function OverviewView({ data }: ViewProps) {
+    const { metaAds, coldEmail, emailMarketing, analytics } = data;
 
     const totalTraffic = analytics.totals.totalUsers;
     const totalSpend = metaAds.totals.totalSpend;

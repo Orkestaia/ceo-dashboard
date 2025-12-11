@@ -1,8 +1,12 @@
-import { mockDashboardData } from "@/lib/mock-data";
 import { Mail, Send, Eye, MessageSquare } from "lucide-react";
+import { DashboardData } from "@/types/n8n";
 
-export function ColdEmailView() {
-    const { campaigns, totals } = mockDashboardData.coldEmail;
+interface ViewProps {
+    data: DashboardData;
+}
+
+export function ColdEmailView({ data }: ViewProps) {
+    const { campaigns, totals } = data.coldEmail;
 
     return (
         <div className="space-y-6">
