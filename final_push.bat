@@ -1,7 +1,7 @@
 @echo off
 setlocal
 echo ==========================================
-echo      FINAL DEPLOY - WATER FEATURE PROS
+echo      FINAL DEPLOY V3 - DARK MODE
 echo ==========================================
 echo.
 
@@ -9,9 +9,9 @@ echo 1. Comprobando estado...
 git status
 
 echo.
-echo 2. Guardando TODOS los cambios (WFP Refactor)...
+echo 2. Guardando TODOS los cambios (V3 Design)...
 git add .
-git commit -m "feat: complete wfp refactor v2"
+git commit -m "feat: v3 dark mode and colorful cards"
 
 echo.
 echo 3. Subiendo a GitHub...
@@ -19,9 +19,9 @@ git push origin main
 
 echo.
 echo ==========================================
-echo              SI "Done" -> VERCEL ACTUALIZARA
+echo              LISTO
 echo ==========================================
-echo Si ves errores de conexion, revisa tu internet.
-echo Si dice "Everything up-to-date", ya esta subido.
+echo Si ves "Everything up-to-date" es que ya estaba.
+echo Revisa Vercel ahora.
 echo.
 pause

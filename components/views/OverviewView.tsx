@@ -1,111 +1,143 @@
 import { mockDashboardData } from "@/lib/mock-data";
-import { DollarSign, Users, Megaphone, TrendingUp, LucideIcon } from "lucide-react";
-
-// Simple Card Component for local use
-interface OverviewCardProps {
-    label: string;
-    value: string;
-    subtext?: string;
-    icon: LucideIcon;
-    colorClass: string;
-}
-
-function OverviewCard({ label, value, subtext, icon: Icon, colorClass }: OverviewCardProps) {
-    return (
-        <div className="p-6 bg-white border rounded-xl shadow-sm hover:shadow-md transition-shadow">
-            <div className="flex justify-between items-start">
-                <div>
-                    <p className="text-sm font-medium text-slate-500">{label}</p>
-                    <h3 className="text-2xl font-bold mt-2 text-slate-900">{value}</h3>
-                </div>
-                <div className={`p-3 rounded-full ${colorClass}`}>
-                    <Icon className="w-5 h-5 text-white" />
-                </div>
-            </div>
-            {subtext && <p className="mt-4 text-xs text-slate-400">{subtext}</p>}
-        </div>
-    )
-}
+import { ColorfulStatCard } from "@/components/dashboard/ColorfulStatCard";
+import { DollarSign, Users, Megaphone, TrendingUp, Monitor, MousePointer } from "lucide-react";
 
 export function OverviewView() {
     const { metaAds, coldEmail, emailMarketing, analytics } = mockDashboardData;
 
-    // Calculate Total Marketing Spend (Meta Ads only in data, but conceptually could be more)
-    const totalSpend = metaAds.totals.totalSpend;
-    // Calculate Total Revenue (Email Marketing only in data)
-    const totalRevenue = emailMarketing.totals.totalRevenue;
-    // Calculate Total Traffic
     const totalTraffic = analytics.totals.totalUsers;
+    const totalSpend = metaAds.totals.totalSpend;
+    const totalRevenue = emailMarketing.totals.totalRevenue;
+    const totalLeads = coldEmail.totals.totalLeads;
 
     return (
-        <div className="space-y-8">
-            <div>
-                <h2 className="text-3xl font-bold text-slate-800">Executive Overview</h2>
-                <p className="text-slate-500 mt-1">Snapshot of performance across all marketing channels.</p>
-                <p className="text-xs text-slate-400 mt-4">Last Updated: {new Date(mockDashboardData.lastUpdated).toLocaleString()}</p>
+        <div className="space-y-8 p-2">
+            <div className="flex flex-col md:flex-row justify-between items-end gap-4 border-b border-white/10 pb-6">
+                <div>
+                    <h2 className="text-3xl font-bold text-white tracking-tight">Marketing Command Center</h2>
+                    <p className="text-slate-400 mt-1">Real-time performance across all channels</p>
+                </div>
+                <div className="flex items-center gap-2 text-sm text-slate-500 bg-slate-900/50 px-3 py-1 rounded-full border border-white/5">
+                    <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                    Live Data Connected
+                </div>
             </div>
 
-            {/* Top Level KPIs */}
+            {/* Top Cards Row - "Slide Style" */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                <OverviewCard
-                    label="Total Revenue (Email)"
+                <ColorfulStatCard
+                    title="Total Revenue"
                     value={`$${totalRevenue.toLocaleString()}`}
-                    subtext="From Email Marketing Campaigns"
+                    color="purple"
                     icon={DollarSign}
-                    colorClass="bg-emerald-500"
+                    subtext="Email Marketing Source"
                 />
-                <OverviewCard
-                    label="Total Ad Spend"
+                <ColorfulStatCard
+                    title="Ad Spend"
                     value={`$${totalSpend.toLocaleString()}`}
-                    subtext="Meta Ads"
-                    icon={TrendingUp}
-                    colorClass="bg-red-500"
-                />
-                <OverviewCard
-                    label="Total Web Traffic"
-                    value={totalTraffic.toLocaleString()}
-                    subtext="Google Analytics Users"
-                    icon={Users}
-                    colorClass="bg-blue-500"
-                />
-                <OverviewCard
-                    label="Total Leads"
-                    value={coldEmail.totals.totalLeads.toLocaleString()}
-                    subtext="Cold Email Pipeline"
+                    color="orange"
                     icon={Megaphone}
-                    colorClass="bg-purple-500"
+                    subtext="Meta Ads Campaign"
+                />
+                <ColorfulStatCard
+                    title="Site Traffic"
+                    value={totalTraffic.toLocaleString()}
+                    color="teal"
+                    icon={Users}
+                    subtext="Unique Visitors"
+                />
+                <ColorfulStatCard
+                    title="Active Leads"
+                    value={totalLeads.toLocaleString()}
+                    color="blue"
+                    icon={TrendingUp}
+                    subtext="Cold Email Pipeline"
                 />
             </div>
 
-            {/* Channel Highlights */}
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                <div className="bg-white p-6 rounded-xl border shadow-sm">
-                    <h3 className="font-semibold text-slate-800 mb-4">Channel Performance</h3>
+            {/* Secondary Metrics Row */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <ColorfulStatCard
+                    title="Avg Open Rate"
+                    value={`${emailMarketing.totals.avgOpenRate}%`}
+                    color="green"
+                    icon={Monitor} // Just a placeholder icon
+                    subtext="Email Campaigns"
+                />
+                <ColorfulStatCard
+                    title="Link Clicks"
+                    value={metaAds.totals.totalClicks.toLocaleString()}
+                    color="pink"
+                    icon={MousePointer}
+                    subtext="Across all ads"
+                />
+                <ColorfulStatCard
+                    title="Reply Rate"
+                    value={`${coldEmail.totals.replyRate}%`}
+                    color="blue"
+                    icon={Megaphone}
+                    subtext="Cold Outreach"
+                />
+            </div>
+
+            {/* Detailed Charts Area */}
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mt-8">
+                <div className="bg-slate-800 border border-slate-700 rounded-xl p-6">
+                    <h3 className="text-lg font-bold text-white mb-6 flex items-center gap-2">
+                        <span className="w-1 h-6 bg-orange-500 rounded-full"></span>
+                        Channel Performance
+                    </h3>
+                    {/* Placeholder for a Bar Chart - using simple HTML bars for now to guarantee render */}
                     <div className="space-y-4">
-                        <div className="flex justify-between items-center p-3 bg-slate-50 rounded-lg">
-                            <span className="text-sm font-medium">Meta Ads ROAS</span>
-                            <span className="font-bold text-slate-700">--</span>
-                            {/* ROAS logic not in mock data explicitly, just placeholder */}
+                        <div className="space-y-2">
+                            <div className="flex justify-between text-sm text-slate-300">
+                                <span>Organic Search</span>
+                                <span>5,400</span>
+                            </div>
+                            <div className="w-full bg-slate-700 rounded-full h-3">
+                                <div className="bg-orange-500 h-3 rounded-full" style={{ width: '65%' }}></div>
+                            </div>
                         </div>
-                        <div className="flex justify-between items-center p-3 bg-slate-50 rounded-lg">
-                            <span className="text-sm font-medium">Email Open Rate</span>
-                            <span className="font-bold text-blue-600">{emailMarketing.totals.avgOpenRate}%</span>
+                        <div className="space-y-2">
+                            <div className="flex justify-between text-sm text-slate-300">
+                                <span>Paid Search</span>
+                                <span>3,200</span>
+                            </div>
+                            <div className="w-full bg-slate-700 rounded-full h-3">
+                                <div className="bg-orange-400 h-3 rounded-full" style={{ width: '40%' }}></div>
+                            </div>
                         </div>
-                        <div className="flex justify-between items-center p-3 bg-slate-50 rounded-lg">
-                            <span className="text-sm font-medium">Cold Email Reply Rate</span>
-                            <span className="font-bold text-emerald-600">{coldEmail.totals.replyRate}%</span>
+                        <div className="space-y-2">
+                            <div className="flex justify-between text-sm text-slate-300">
+                                <span>Email</span>
+                                <span>1,850</span>
+                            </div>
+                            <div className="w-full bg-slate-700 rounded-full h-3">
+                                <div className="bg-orange-300 h-3 rounded-full" style={{ width: '25%' }}></div>
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                <div className="bg-white p-6 rounded-xl border shadow-sm flex flex-col justify-center items-center text-center">
-                    <div className="p-4 bg-primary/10 rounded-full mb-4">
-                        <Megaphone className="w-8 h-8 text-primary" />
+                <div className="bg-slate-800 border border-slate-700 rounded-xl p-6">
+                    <h3 className="text-lg font-bold text-white mb-6 flex items-center gap-2">
+                        <span className="w-1 h-6 bg-purple-500 rounded-full"></span>
+                        Top Campaigns (ROI)
+                    </h3>
+                    <div className="space-y-4">
+                        {metaAds.campaigns.slice(0, 3).map((camp, idx) => (
+                            <div key={idx} className="flex items-center justify-between p-3 bg-slate-900/50 rounded-lg border border-slate-700">
+                                <div>
+                                    <p className="font-medium text-white text-sm">{camp["Campaign name"]}</p>
+                                    <p className="text-xs text-slate-400">{camp.Impressions} impr.</p>
+                                </div>
+                                <div className="text-right">
+                                    <p className="font-bold text-emerald-400 text-sm">{camp.Results} Leads</p>
+                                    <p className="text-xs text-slate-500">${camp["Amount spent (USD)"]}</p>
+                                </div>
+                            </div>
+                        ))}
                     </div>
-                    <h3 className="text-lg font-bold text-slate-800">Marketing Intelligence</h3>
-                    <p className="text-slate-500 text-sm mt-2 max-w-xs">
-                        Data is updated automatically every Monday via n8n integration.
-                    </p>
                 </div>
             </div>
         </div>

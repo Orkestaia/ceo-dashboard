@@ -21,15 +21,12 @@ const sidebarItems = [
 ];
 
 export function Sidebar() {
-    // We use query params for simple state management in V2, 
-    // checking href match is tricky with query params, so we'll do simple check
-    // In a real app we'd use useSearchParams
     const [isMobileOpen, setIsMobileOpen] = useState(false);
 
     return (
         <>
             <button
-                className="lg:hidden fixed top-4 left-4 z-50 p-2 bg-primary text-primary-foreground rounded-md shadow-lg"
+                className="lg:hidden fixed top-4 left-4 z-50 p-2 bg-slate-800 text-white rounded-md shadow-lg border border-slate-700"
                 onClick={() => setIsMobileOpen(!isMobileOpen)}
             >
                 <Menu size={24} />
@@ -37,18 +34,18 @@ export function Sidebar() {
 
             <aside
                 className={cn(
-                    "fixed top-0 left-0 z-40 h-screen w-64 bg-white border-r border-border transition-transform duration-300 lg:translate-x-0 shadow-sm",
+                    "fixed top-0 left-0 z-40 h-screen w-64 bg-slate-900 border-r border-slate-800 transition-transform duration-300 lg:translate-x-0 shadow-xl",
                     isMobileOpen ? "translate-x-0" : "-translate-x-full"
                 )}
             >
                 <div className="h-full px-3 py-4 overflow-y-auto flex flex-col">
-                    {/* Logo */}
-                    <div className="mb-10 px-4 flex justify-center">
+                    {/* Logo Container - White background for logo visibility if needed, or transparent if logo handles it */}
+                    <div className="mb-10 px-4 py-6 flex justify-center bg-white/5 rounded-xl mx-2">
                         {/* Using the logo URL provided */}
                         <img
                             src="https://waterfeaturepros.com/wp-content/uploads/2025/01/Logo-150x104-1.jpg"
                             alt="Water Feature Pros"
-                            className="h-16 w-auto object-contain"
+                            className="h-16 w-auto object-contain mix-blend-screen" // mix-blend to help integrate if it has black bg, or remove if it looks bad
                         />
                     </div>
 
@@ -58,23 +55,30 @@ export function Sidebar() {
                                 <Link
                                     href={item.href}
                                     className={cn(
-                                        "flex items-center p-3 rounded-lg group transition-all duration-200 hover:bg-muted",
-                                        // Simple active check logic could be refined
-                                        "text-slate-600 hover:text-primary"
+                                        "flex items-center p-3 rounded-lg group transition-all duration-200 border border-transparent",
+                                        "text-slate-400 hover:text-white hover:bg-slate-800 hover:border-slate-700"
                                     )}
                                 >
-                                    <item.icon className="w-5 h-5" />
+                                    <item.icon className="w-5 h-5 group-hover:text-primary transition-colors" />
                                     <span className="ml-3">{item.label}</span>
                                 </Link>
                             </li>
                         ))}
                     </ul>
+
+                    <div className="p-4 mt-auto">
+                        <div className="bg-gradient-to-br from-primary/20 to-purple-600/20 rounded-xl p-4 border border-white/5">
+                            <p className="text-xs text-slate-400">Connected to</p>
+                            <p className="text-sm font-semibold text-white truncate">Google Sheets Live</p>
+                        </div>
+                    </div>
+
                 </div>
             </aside>
 
             {isMobileOpen && (
                 <div
-                    className="fixed inset-0 z-30 bg-black/50 lg:hidden"
+                    className="fixed inset-0 z-30 bg-black/80 backdrop-blur-sm lg:hidden"
                     onClick={() => setIsMobileOpen(false)}
                 />
             )}
