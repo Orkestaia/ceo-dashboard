@@ -1,16 +1,16 @@
 export const SHEET_CONFIG = {
-  // Main Spreadsheet ID
+  // Published spreadsheet base URL
+  PUBLISHED_BASE_URL: "https://docs.google.com/spreadsheets/d/e/2PACX-1vTgTGlbOr5W5e3tRe_YNXB0UUtgk0gce8IfAg1bkMyzvBftt_rjI94F7fMbbIszQbBhj3NgBNhBTyGW/pub",
+
+  // Original spreadsheet ID (for export URLs)
   SPREADSHEET_ID: "1xkpYfxjHa1V0Z-yZsozFnN2cbfShAzI5KmbgNQN76s4",
 
-  // GIDs provided by user
-  // Mapping based on previous context 
-  // (1361877226=Channels, 896433562=Pages). 
-  // Assigning leftovers to others sequentially.
+  // GIDs for each sheet tab
   SHEETS: {
-    ANALYTICS: "1361877226",      // Confirmed via history
-    ANALYTICS_PAGES: "896433562", // Confirmed via history
-    META_ADS: "1803005666",       // Assumed order
-    COLD_EMAIL: "1841138132",     // Assumed order
-    EMAIL_MKT: "1834854673"       // Assumed order
+    ANALYTICS: "1361877226",
+    ANALYTICS_PAGES: "896433562",
+    META_ADS: "1803005666",
+    COLD_EMAIL: "1841138132",
+    EMAIL_MKT: "1834854673"
   }
 };
