@@ -18,8 +18,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="dark">
-      <body className={cn(inter.className, "bg-background text-foreground overflow-hidden")}>
+    <html lang="en">
+      <body className={cn(inter.className, "bg-slate-50 text-slate-900 overflow-hidden")}>
         <div className="flex h-screen w-full">
           <Sidebar />
           <main className="flex-1 flex flex-col lg:pl-64 h-full overflow-hidden transition-all duration-300">
