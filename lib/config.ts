@@ -5,12 +5,12 @@ export const SHEET_CONFIG = {
   // Original spreadsheet ID (for export URLs)
   SPREADSHEET_ID: "1xkpYfxjHa1V0Z-yZsozFnN2cbfShAzI5KmbgNQN76s4",
 
-  // GIDs for each sheet tab
+  // CORRECTED GIDs - verified by actual CSV content
   SHEETS: {
-    ANALYTICS: "1361877226",
-    ANALYTICS_PAGES: "896433562",
-    META_ADS: "1803005666",
-    COLD_EMAIL: "1841138132",
-    EMAIL_MKT: "1834854673"
+    ANALYTICS: "1361877226",        // ✅ Acquisition Channels
+    ANALYTICS_PAGES: "896433562",   // ✅ Top Pages
+    COLD_EMAIL: "1803005666",       // ✅ FIXED: Was META_ADS
+    EMAIL_MKT: "1841138132",        // ✅ FIXED: Was COLD_EMAIL  
+    META_ADS: "1834854673"          // ✅ FIXED: Was EMAIL_MKT
   }
 };
