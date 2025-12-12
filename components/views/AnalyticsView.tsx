@@ -10,24 +10,24 @@ export function AnalyticsView({ data }: ViewProps) {
 
     const glossaryItems = [
         {
-            term: "USERS (Usuarios)",
-            definition: "Visitantes únicos a tu sitio web (contados una vez incluso si visitan múltiples veces)."
+            term: "USERS",
+            definition: "Unique visitors to your website (counted once even if they visit multiple times)."
         },
         {
-            term: "NEW USERS (Usuarios Nuevos)",
-            definition: "Visitantes que nunca han estado en tu sitio antes."
+            term: "NEW USERS",
+            definition: "First-time visitors who have never been to your site before."
         },
         {
-            term: "RETURNING USERS (Usuarios Recurrentes)",
-            definition: "Visitantes que han estado en tu sitio anteriormente."
+            term: "RETURNING USERS",
+            definition: "Visitors who have been to your site before."
         },
         {
-            term: "KEY EVENTS (Eventos Clave)",
-            definition: "Acciones importantes que los visitantes realizan (envíos de formularios, compras, registros, etc.)"
+            term: "KEY EVENTS",
+            definition: "Important actions visitors take (form submissions, purchases, sign-ups, etc.)"
         },
         {
-            term: "CHANNELS (Canales)",
-            definition: "Direct: Personas que escribieron tu URL directamente o usaron un marcador\n\nOrganic Search: Personas que te encontraron a través de búsqueda en Google/Bing\n\nPaid Social: Tráfico de anuncios pagados en redes sociales (Facebook, Instagram, etc.)\n\nOrganic Social: Tráfico de publicaciones no pagadas en redes sociales\n\nReferral: Tráfico de enlaces en otros sitios web\n\nEmail: Tráfico de campañas de email"
+            term: "CHANNELS",
+            definition: "Direct: People who typed your URL directly or used a bookmark\n\nOrganic Search: People who found you through Google/Bing search\n\nPaid Social: Traffic from paid ads on social media (Facebook, Instagram, etc.)\n\nOrganic Social: Traffic from non-paid social media posts\n\nReferral: Traffic from links on other websites\n\nEmail: Traffic from email campaigns"
         }
     ];
 

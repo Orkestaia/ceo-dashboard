@@ -12,31 +12,31 @@ export function ColdEmailView({ data }: ViewProps) {
     const glossaryItems = [
         {
             term: "LEAD IN LIST",
-            definition: "Número total de contactos en tu lista objetivo antes de enviar."
+            definition: "Total number of contacts in your target list before sending."
         },
         {
-            term: "SENT (Enviados)",
-            definition: "Número de emails enviados exitosamente (puede ser menor que la lista debido a validación)."
+            term: "SENT",
+            definition: "Number of emails successfully sent (may be lower than list due to validation)."
         },
         {
-            term: "OPEN RATE (Tasa de Apertura)",
-            definition: "Porcentaje de destinatarios que abrieron tu email.\nFórmula: (Aperturas ÷ Enviados) × 100",
-            benchmark: "Promedio cold email: 25-40% | Bueno: >40% | Bajo: <25%"
+            term: "OPEN RATE",
+            definition: "Percentage of recipients who opened your email.\nFormula: (Opens ÷ Sent) × 100",
+            benchmark: "Cold email average: 25-40% | Good: >40% | Poor: <25%"
         },
         {
-            term: "REPLY RATE (Tasa de Respuesta)",
-            definition: "Porcentaje de destinatarios que respondieron a tu email.\nFórmula: (Respuestas ÷ Enviados) × 100",
-            benchmark: "Promedio industria: 2-5% | Bueno: >5% | Bajo: <2%"
+            term: "REPLY RATE",
+            definition: "Percentage of recipients who replied to your email.\nFormula: (Replies ÷ Sent) × 100",
+            benchmark: "Industry average: 2-5% | Good: >5% | Poor: <2%"
         },
         {
-            term: "POSITIVE REPLY (Respuesta Positiva)",
-            definition: "Respuestas que indican interés genuino en tu oferta (no \"cancelar suscripción\" o \"no interesado\").",
-            benchmark: "Objetivo: >1-2% de emails enviados"
+            term: "POSITIVE REPLY",
+            definition: "Responses indicating genuine interest in your offering (not \"unsubscribe\" or \"not interested\").",
+            benchmark: "Target: >1-2% of sent emails"
         },
         {
-            term: "BOUNCE RATE (Tasa de Rebote)",
-            definition: "Emails que no pudieron ser entregados (direcciones inválidas, buzón lleno, etc.).",
-            benchmark: "Objetivo: Mantener por debajo del 2%"
+            term: "BOUNCE RATE",
+            definition: "Emails that couldn't be delivered (invalid addresses, full inbox, etc.).",
+            benchmark: "Target: Keep below 2%"
         }
     ];
 

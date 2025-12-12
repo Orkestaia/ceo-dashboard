@@ -11,27 +11,27 @@ export function EmailMarketingView({ data }: ViewProps) {
 
     const glossaryItems = [
         {
-            term: "DELIVERED (Entregados)",
-            definition: "Emails que llegaron exitosamente al buzón del destinatario.\nFórmula: Enviados - Rebotados"
+            term: "DELIVERED",
+            definition: "Emails that successfully reached the recipient's inbox.\nFormula: Sent - Bounced"
         },
         {
-            term: "OPEN RATE (Tasa de Apertura)",
-            definition: "Porcentaje de emails entregados que fueron abiertos.",
-            benchmark: "Promedio industria: 15-25% | Bueno: >25% | Bajo: <15%"
+            term: "OPEN RATE",
+            definition: "Percentage of delivered emails that were opened.",
+            benchmark: "Industry average: 15-25% | Good: >25% | Poor: <15%"
         },
         {
-            term: "CLICK RATE (Tasa de Clics)",
-            definition: "Porcentaje de aperturas que resultaron en un clic en enlace.",
-            benchmark: "Promedio industria: 1.5-3% | Bueno: >3% | Bajo: <1.5%"
+            term: "CLICK RATE",
+            definition: "Percentage of opens that resulted in a link click.",
+            benchmark: "Industry average: 1.5-3% | Good: >3% | Poor: <1.5%"
         },
         {
-            term: "UNSUBSCRIBE RATE (Tasa de Cancelación)",
-            definition: "Porcentaje de destinatarios que se dieron de baja.",
-            benchmark: "Objetivo: Mantener por debajo del 0.5%"
+            term: "UNSUBSCRIBE RATE",
+            definition: "Percentage of recipients who opted out.",
+            benchmark: "Target: Keep below 0.5%"
         },
         {
-            term: "REVENUE (Ingresos)",
-            definition: "Ventas directas atribuidas a esta campaña de email."
+            term: "REVENUE",
+            definition: "Direct sales attributed to this email campaign."
         }
     ];
 

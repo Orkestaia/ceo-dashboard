@@ -1,7 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
 import { cn } from "@/lib/utils";
 import {
     PieChart,
@@ -41,14 +40,11 @@ export function Sidebar() {
             >
                 <div className="h-full px-3 py-4 overflow-y-auto flex flex-col">
                     {/* Logo */}
-                    <div className="mb-8 px-4 py-4 flex justify-center">
-                        <Image
-                            src="/wfp-logo.png"
+                    <div className="mb-8 px-4 py-4 flex justify-center bg-white/10 rounded-lg">
+                        <img
+                            src="https://waterfeaturepros.com/wp-content/uploads/2025/01/Logo-150x104-1.jpg"
                             alt="Water Feature Pros"
-                            width={150}
-                            height={104}
                             className="h-14 w-auto object-contain"
-                            priority
                         />
                     </div>
 
@@ -68,14 +64,6 @@ export function Sidebar() {
                             </li>
                         ))}
                     </ul>
-
-                    <div className="p-4 mt-auto">
-                        <div className="bg-gradient-to-br from-primary/20 to-purple-600/20 rounded-xl p-4 border border-white/5">
-                            <p className="text-xs text-slate-400">Connected to</p>
-                            <p className="text-sm font-semibold text-white truncate">Google Sheets Live</p>
-                        </div>
-                    </div>
-
                 </div>
             </aside>
 

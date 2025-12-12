@@ -11,31 +11,31 @@ export function MetaAdsView({ data }: ViewProps) {
 
     const glossaryItems = [
         {
-            term: "IMPRESSIONS (Impresiones)",
-            definition: "Número de veces que tu anuncio fue mostrado en pantalla.",
+            term: "IMPRESSIONS",
+            definition: "Number of times your ad was displayed on screen.",
         },
         {
             term: "CTR (Click-Through Rate)",
-            definition: "Porcentaje de personas que hicieron clic en tu anuncio después de verlo.\nFórmula: (Clicks ÷ Impresiones) × 100",
-            benchmark: "Promedio industria: 0.9-1.5% | Bueno: >1.5% | Bajo: <0.9%"
+            definition: "Percentage of people who clicked your ad after seeing it.\nFormula: (Clicks ÷ Impressions) × 100",
+            benchmark: "Industry average: 0.9-1.5% | Good: >1.5% | Poor: <0.9%"
         },
         {
             term: "CPC (Cost Per Click)",
-            definition: "Cantidad promedio que pagas cada vez que alguien hace clic en tu anuncio.\nFórmula: Gasto Total ÷ Total de Clicks",
-            benchmark: "Promedio industria: $0.80-$1.50 | Bueno: <$0.80 | Alto: >$1.50"
+            definition: "Average amount you pay each time someone clicks your ad.\nFormula: Total Spend ÷ Total Clicks\nLower is better.",
+            benchmark: "Industry average: $0.80-$1.50 | Good: <$0.80 | High: >$1.50"
         },
         {
             term: "CPM (Cost Per Mille)",
-            definition: "Costo por 1,000 impresiones. Cuánto pagas por mostrar tu anuncio 1,000 veces.\nFórmula: (Gasto Total ÷ Impresiones) × 1000",
-            benchmark: "Promedio industria: $10-$15 | Bueno: <$10 | Alto: >$15"
+            definition: "Cost per 1,000 impressions. How much you pay to show your ad 1,000 times.\nFormula: (Total Spend ÷ Impressions) × 1000",
+            benchmark: "Industry average: $10-$15 | Good: <$10 | High: >$15"
         },
         {
-            term: "RESULTS (Resultados)",
-            definition: "La acción específica para la que optimizaste tu campaña (clics en enlaces, vistas de página de destino, compras, leads, etc.)"
+            term: "RESULTS",
+            definition: "The specific action you optimized your campaign for (link clicks, landing page views, purchases, leads, etc.)"
         },
         {
-            term: "COST PER RESULT (Costo por Resultado)",
-            definition: "Costo promedio para lograr un resultado/conversión.\nFórmula: Gasto Total ÷ Total de Resultados"
+            term: "COST PER RESULT",
+            definition: "Average cost to achieve one result/conversion.\nFormula: Total Spend ÷ Total Results"
         }
     ];
 
