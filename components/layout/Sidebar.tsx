@@ -40,12 +40,22 @@ export function Sidebar() {
             >
                 <div className="h-full px-3 py-4 overflow-y-auto flex flex-col">
                     {/* Logo */}
-                    <div className="mb-8 px-4 py-4 flex justify-center bg-white rounded-lg">
-                        <img
-                            src="https://waterfeaturepros.com/wp-content/uploads/2025/01/Logo-150x104-1.jpg"
-                            alt="Water Feature Pros"
-                            className="h-14 w-auto object-contain"
-                        />
+                    <div className="mb-8 px-3 py-3 flex justify-center bg-white rounded-lg shadow-md">
+                        <div className="w-32 h-20 flex items-center justify-center">
+                            <img
+                                src="https://waterfeaturepros.com/wp-content/uploads/2025/01/Logo-150x104-1.jpg"
+                                alt="WFP Logo"
+                                className="max-w-full max-h-full object-contain"
+                                onError={(e) => {
+                                    const target = e.target as HTMLImageElement;
+                                    target.style.display = 'none';
+                                    const parent = target.parentElement;
+                                    if (parent) {
+                                        parent.innerHTML = '<div class="text-[#34B6D5] font-bold text-2xl">WFP</div>';
+                                    }
+                                }}
+                            />
+                        </div>
                     </div>
 
                     <ul className="space-y-2 font-medium flex-1">

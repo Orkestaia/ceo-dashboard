@@ -14,19 +14,21 @@ export function Header() {
     }, []);
 
     const formatDate = (date: Date) => {
-        return date.toLocaleDateString('es-ES', {
+        return date.toLocaleDateString('en-US', {
             weekday: 'long',
             year: 'numeric',
             month: 'long',
-            day: 'numeric'
+            day: 'numeric',
+            timeZone: 'America/New_York'
         });
     };
 
     const formatTime = (date: Date) => {
-        return date.toLocaleTimeString('es-ES', {
+        return date.toLocaleTimeString('en-US', {
             hour: '2-digit',
             minute: '2-digit',
-            second: '2-digit'
+            second: '2-digit',
+            timeZone: 'America/New_York'
         });
     };
 
