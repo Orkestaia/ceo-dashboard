@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { cn } from "@/lib/utils";
 import {
     PieChart,
@@ -39,13 +40,15 @@ export function Sidebar() {
                 )}
             >
                 <div className="h-full px-3 py-4 overflow-y-auto flex flex-col">
-                    {/* Logo Container - White background for logo visibility if needed, or transparent if logo handles it */}
-                    <div className="mb-10 px-4 py-6 flex justify-center bg-white/5 rounded-xl mx-2">
-                        {/* Using the logo URL provided */}
-                        <img
-                            src="https://waterfeaturepros.com/wp-content/uploads/2025/01/Logo-150x104-1.jpg"
+                    {/* Logo */}
+                    <div className="mb-8 px-4 py-4 flex justify-center">
+                        <Image
+                            src="/wfp-logo.png"
                             alt="Water Feature Pros"
-                            className="h-16 w-auto object-contain mix-blend-screen" // mix-blend to help integrate if it has black bg, or remove if it looks bad
+                            width={150}
+                            height={104}
+                            className="h-14 w-auto object-contain"
+                            priority
                         />
                     </div>
 

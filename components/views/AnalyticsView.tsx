@@ -1,4 +1,5 @@
 import { SheetData } from "@/types/sheets";
+import { Glossary } from "@/components/dashboard/Glossary";
 
 interface ViewProps {
     data: SheetData;
@@ -7,14 +8,38 @@ interface ViewProps {
 export function AnalyticsView({ data }: ViewProps) {
     const { acquisitionChannels, topPages } = data;
 
+    const glossaryItems = [
+        {
+            term: "USERS (Usuarios)",
+            definition: "Visitantes únicos a tu sitio web (contados una vez incluso si visitan múltiples veces)."
+        },
+        {
+            term: "NEW USERS (Usuarios Nuevos)",
+            definition: "Visitantes que nunca han estado en tu sitio antes."
+        },
+        {
+            term: "RETURNING USERS (Usuarios Recurrentes)",
+            definition: "Visitantes que han estado en tu sitio anteriormente."
+        },
+        {
+            term: "KEY EVENTS (Eventos Clave)",
+            definition: "Acciones importantes que los visitantes realizan (envíos de formularios, compras, registros, etc.)"
+        },
+        {
+            term: "CHANNELS (Canales)",
+            definition: "Direct: Personas que escribieron tu URL directamente o usaron un marcador\n\nOrganic Search: Personas que te encontraron a través de búsqueda en Google/Bing\n\nPaid Social: Tráfico de anuncios pagados en redes sociales (Facebook, Instagram, etc.)\n\nOrganic Social: Tráfico de publicaciones no pagadas en redes sociales\n\nReferral: Tráfico de enlaces en otros sitios web\n\nEmail: Tráfico de campañas de email"
+        }
+    ];
+
     return (
         <div className="space-y-8 p-6">
+            {/* Header */}
             <div>
                 <h2 className="text-3xl font-bold text-white mb-2">Google Analytics</h2>
                 <p className="text-slate-400">Acquisition Channels & Top Pages</p>
             </div>
 
-            {/* Acquisition Channels */}
+            {/* Acquisition Channels Table */}
             <div className="bg-slate-800/50 border border-slate-700 rounded-xl p-6">
                 <h3 className="text-xl font-semibold text-white mb-4">Acquisition Channels</h3>
                 <div className="overflow-x-auto">
@@ -46,7 +71,7 @@ export function AnalyticsView({ data }: ViewProps) {
                 </div>
             </div>
 
-            {/* Top Pages */}
+            {/* Top Pages Table */}
             <div className="bg-slate-800/50 border border-slate-700 rounded-xl p-6">
                 <h3 className="text-xl font-semibold text-white mb-4">Top 10 Pages</h3>
                 <div className="overflow-x-auto">
@@ -70,6 +95,9 @@ export function AnalyticsView({ data }: ViewProps) {
                     </table>
                 </div>
             </div>
+
+            {/* Glossary */}
+            <Glossary items={glossaryItems} />
         </div>
     );
 }
