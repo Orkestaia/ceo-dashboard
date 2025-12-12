@@ -24,7 +24,7 @@ export function Glossary({ items }: GlossaryProps) {
             >
                 <div className="flex items-center gap-3">
                     <BookOpen className="w-5 h-5 text-[#34B6D5]" />
-                    <h3 className="text-lg font-semibold text-white">📖 Definiciones de Métricas</h3>
+                    <h3 className="text-lg font-semibold text-white">📖 Metric Definitions</h3>
                 </div>
                 {isOpen ? (
                     <ChevronUp className="w-5 h-5 text-slate-400" />

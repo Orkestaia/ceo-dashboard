@@ -40,7 +40,7 @@ export function Sidebar() {
             >
                 <div className="h-full px-3 py-4 overflow-y-auto flex flex-col">
                     {/* Logo */}
-                    <div className="mb-8 px-4 py-4 flex justify-center bg-white/10 rounded-lg">
+                    <div className="mb-8 px-4 py-4 flex justify-center bg-white rounded-lg">
                         <img
                             src="https://waterfeaturepros.com/wp-content/uploads/2025/01/Logo-150x104-1.jpg"
                             alt="Water Feature Pros"
