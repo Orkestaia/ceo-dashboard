@@ -6,6 +6,7 @@ export const mockDashboardData: DashboardData = {
         campaigns: [
             {
                 "Campaign name": "WFP_Pond_Pumps_Q4",
+                "status": "active",
                 "Amount spent (USD)": "1250.50",
                 "Impressions": "45000",
                 "Link clicks": "1200",
@@ -13,11 +14,12 @@ export const mockDashboardData: DashboardData = {
             },
             {
                 "Campaign name": "WFP_Fountains_BlackFriday",
+                "status": "inactive",
                 "Amount spent (USD)": "2100.00",
                 "Impressions": "85000",
                 "Link clicks": "3400",
                 "Results": "120"
-            }
+            },
         ],
         totals: {
             totalSpend: 3350.50,
@@ -31,23 +33,31 @@ export const mockDashboardData: DashboardData = {
     coldEmail: {
         campaigns: [
             {
-                "Campaign Name": "B2B_Landscapers_Texas",
+                "Sector": "Landscape Architecture",
+                "State": "FLORIDA",
                 "Lead in list": "500",
                 "Sent": "480",
+                "Completed": "400",
                 "Open": "240",
                 "Reply": "35",
+                "%": "7.3%",
                 "Positive Reply": "5",
-                "Clic in link": "40"
+                "Clic in link": "40",
+                "Bounced": "5"
             },
             {
-                "Campaign Name": "B2B_Architects_California",
+                "Sector": "Construction",
+                "State": "TEXAS",
                 "Lead in list": "300",
                 "Sent": "290",
+                "Completed": "200",
                 "Open": "180",
                 "Reply": "15",
+                "%": "5.2%",
                 "Positive Reply": "2",
-                "Clic in link": "20"
-            }
+                "Clic in link": "20",
+                "Bounced": "2"
+            },
         ],
         totals: {
             totalLeads: 800,

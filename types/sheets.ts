@@ -22,6 +22,7 @@ export interface ColdEmailRow {
     "Completed": string;
     "Open": string;
     "Reply": string;
+    "%": string;
     "Positive Reply": string;
     "Clic in link": string;
     "Bounced": string;
@@ -42,6 +43,7 @@ export interface EmailMarketingRow {
 
 export interface MetaAdsRow {
     "Campaign name": string;
+    "status": string;
     "Amount spent (USD)": string;
     "Impressions": string;
     "CPM (cost per 1,000 impressions)": string;

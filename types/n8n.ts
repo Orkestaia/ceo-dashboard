@@ -22,6 +22,7 @@ export interface DashboardData {
 // --- Meta Ads ---
 export interface MetaAdsCampaign {
     "Campaign name": string;
+    "status": string;
     "Amount spent (USD)": string;
     "Impressions": string;
     "Link clicks": string;
@@ -40,13 +41,17 @@ export interface MetaAdsTotals {
 
 // --- Cold Email ---
 export interface ColdEmailCampaign {
-    "Campaign Name": string;
+    "Sector": string;
+    "State": string;
     "Lead in list": string;
     "Sent": string;
+    "Completed": string;
     "Open": string;
     "Reply": string;
+    "%": string;
     "Positive Reply": string;
     "Clic in link": string;
+    "Bounced": string;
 }
 
 export interface ColdEmailTotals {

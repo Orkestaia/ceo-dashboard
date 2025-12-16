@@ -55,6 +55,7 @@ export function MetaAdsView({ data }: ViewProps) {
                         <thead>
                             <tr className="border-b border-slate-700">
                                 <th className="text-left py-3 px-4 text-slate-300 font-medium">Campaign name</th>
+                                <th className="text-left py-3 px-4 text-slate-300 font-medium">Status</th>
                                 <th className="text-right py-3 px-4 text-slate-300 font-medium">Amount spent (USD)</th>
                                 <th className="text-right py-3 px-4 text-slate-300 font-medium">Impressions</th>
                                 <th className="text-right py-3 px-4 text-slate-300 font-medium">CPM</th>
@@ -76,6 +77,18 @@ export function MetaAdsView({ data }: ViewProps) {
                                 return (
                                     <tr key={idx} className={`border-b border-slate-700/50 hover:bg-slate-700/30 ${isTotalRow ? "font-bold bg-slate-800" : ""}`}>
                                         <td className="py-3 px-4 text-white">{row["Campaign name"]}</td>
+                                        <td className="py-3 px-4">
+                                            {!isTotalRow && (
+                                                <div className="flex items-center gap-2">
+                                                    {row["status"]?.toLowerCase() === "active" && (
+                                                        <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+                                                    )}
+                                                    <span className={`text-sm ${row["status"]?.toLowerCase() === "active" ? "text-emerald-400" : "text-slate-500"}`}>
+                                                        {row["status"] || "-"}
+                                                    </span>
+                                                </div>
+                                            )}
+                                        </td>
                                         <td className="py-3 px-4 text-right text-red-400 font-semibold">{row["Amount spent (USD)"]}</td>
                                         <td className="py-3 px-4 text-right text-blue-400">{row["Impressions"]}</td>
                                         <td className={`py-3 px-4 text-right font-semibold ${getCPMColor(cpm)}`}>{row["CPM (cost per 1,000 impressions)"]}</td>

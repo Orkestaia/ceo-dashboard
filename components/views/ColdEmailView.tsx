@@ -62,6 +62,7 @@ export function ColdEmailView({ data }: ViewProps) {
                                 <th className="text-right py-3 px-4 text-slate-300 font-medium">Completed</th>
                                 <th className="text-right py-3 px-4 text-slate-300 font-medium">Open</th>
                                 <th className="text-right py-3 px-4 text-slate-300 font-medium">Reply</th>
+                                <th className="text-right py-3 px-4 text-slate-300 font-medium">%</th>
                                 <th className="text-right py-3 px-4 text-slate-300 font-medium">Positive Reply</th>
                                 <th className="text-right py-3 px-4 text-slate-300 font-medium">Clic in link</th>
                                 <th className="text-right py-3 px-4 text-slate-300 font-medium">Bounced</th>
@@ -91,6 +92,7 @@ export function ColdEmailView({ data }: ViewProps) {
                                         <td className={`py-3 px-4 text-right font-semibold ${getReplyRateColor(replyRate)}`}>
                                             {row["Reply"]} ({replyRate.toFixed(1)}%)
                                         </td>
+                                        <td className="py-3 px-4 text-right text-slate-300">{row["%"]}</td>
                                         <td className="py-3 px-4 text-right text-emerald-300">{row["Positive Reply"]}</td>
                                         <td className="py-3 px-4 text-right text-cyan-400">{row["Clic in link"]}</td>
                                         <td className={`py-3 px-4 text-right font-semibold ${getBounceRateColor(bounceRate)}`}>
