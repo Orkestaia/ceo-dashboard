@@ -87,10 +87,10 @@ export function ColdEmailView({ data }: ViewProps) {
                                         <td className="py-3 px-4 text-right text-emerald-400">{row["Sent"]}</td>
                                         <td className="py-3 px-4 text-right text-purple-400">{row["Completed"]}</td>
                                         <td className={`py-3 px-4 text-right font-semibold ${getOpenRateColor(openRate)}`}>
-                                            {row["Open"]} ({openRate.toFixed(1)}%)
+                                            {row["Open"]}
                                         </td>
                                         <td className={`py-3 px-4 text-right font-semibold ${getReplyRateColor(replyRate)}`}>
-                                            {row["Reply"]} ({replyRate.toFixed(1)}%)
+                                            {row["Reply"]}
                                         </td>
                                         <td className="py-3 px-4 text-right text-slate-300">{row["%"]}</td>
                                         <td className="py-3 px-4 text-right text-emerald-300">{row["Positive Reply"]}</td>
